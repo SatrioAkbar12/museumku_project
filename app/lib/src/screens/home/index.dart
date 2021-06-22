@@ -31,78 +31,78 @@ class HomeScreen extends StatelessWidget {
                       style: Theme.of(context).appBarTheme.textTheme.bodyText1,
                     ),
                     actions: [
-                      IconButton(
-                          icon: Icon(Icons.logout),
-                          onPressed: () {
-                            authenticationBloc.add(UserLogOut());
-                          }),
+                      // IconButton(
+                      //     icon: Icon(Icons.logout),
+                      //     onPressed: () {
+                      //       authenticationBloc.add(UserLogOut());
+                      //     }),
                     ],
                   ),
                   body: Center(
                     child: Text('/home'),
                   ),
                   drawer: Drawer(
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      children: <Widget>[
-                        DrawerHeader(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Colors.white),
-                                    child: CachedImage(
-                                      imageUrl:
-                                          state.currentUserData.data.avatar,
-                                      fit: BoxFit.fitWidth,
-                                      errorWidget: Image.network(
-                                        AllImages().kDefaultImage,
-                                      ),
-                                      width: 80,
-                                      height: 80,
-                                      placeholder: CircularProgressIndicator(),
-                                    ),
-                                  ),
-                                  Switch(
-                                    value:
-                                        Provider.of<AppStateNotifier>(context)
-                                            .isDarkMode,
-                                    onChanged: (value) {
-                                      Provider.of<AppStateNotifier>(context,
-                                              listen: false)
-                                          .updateTheme(value);
-                                    },
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).dividerColor,
-                          ),
-                        ),
-                        ListTile(
-                          title: Text(
-                              '${state.currentUserData.data.firstName} ${state.currentUserData.data.lastName}',
-                              style: Theme.of(context).textTheme.bodyText2),
-                        ),
-                        ListTile(
-                          title: Text(state.currentUserData.data.email,
-                              style: Theme.of(context).textTheme.bodyText2),
-                        ),
-                        ListTile(
-                          title: Text(state.currentUserData.ad.company,
-                              style: Theme.of(context).textTheme.bodyText2),
-                        ),
-                      ],
-                    ),
+                    // child: ListView(
+                    //   padding: EdgeInsets.zero,
+                    //   children: <Widget>[
+                    //     DrawerHeader(
+                    //       child: Column(
+                    //         crossAxisAlignment: CrossAxisAlignment.start,
+                    //         children: [
+                    //           Row(
+                    //             mainAxisAlignment:
+                    //                 MainAxisAlignment.spaceBetween,
+                    //             crossAxisAlignment: CrossAxisAlignment.start,
+                    //             children: [
+                    //               Container(
+                    //                 decoration: BoxDecoration(
+                    //                     borderRadius: BorderRadius.circular(50),
+                    //                     color: Colors.white),
+                    //                 child: CachedImage(
+                    //                   imageUrl:
+                    //                       state.currentUserData.data.avatar,
+                    //                   fit: BoxFit.fitWidth,
+                    //                   errorWidget: Image.network(
+                    //                     AllImages().kDefaultImage,
+                    //                   ),
+                    //                   width: 80,
+                    //                   height: 80,
+                    //                   placeholder: CircularProgressIndicator(),
+                    //                 ),
+                    //               ),
+                    //               Switch(
+                    //                 value:
+                    //                     Provider.of<AppStateNotifier>(context)
+                    //                         .isDarkMode,
+                    //                 onChanged: (value) {
+                    //                   Provider.of<AppStateNotifier>(context,
+                    //                           listen: false)
+                    //                       .updateTheme(value);
+                    //                 },
+                    //               ),
+                    //             ],
+                    //           )
+                    //         ],
+                    //       ),
+                    //       decoration: BoxDecoration(
+                    //         color: Theme.of(context).dividerColor,
+                    //       ),
+                    //     ),
+                    //     ListTile(
+                    //       title: Text(
+                    //           '${state.currentUserData.data.firstName} ${state.currentUserData.data.lastName}',
+                    //           style: Theme.of(context).textTheme.bodyText2),
+                    //     ),
+                    //     ListTile(
+                    //       title: Text(state.currentUserData.data.email,
+                    //           style: Theme.of(context).textTheme.bodyText2),
+                    //     ),
+                    //     ListTile(
+                    //       title: Text(state.currentUserData.ad.company,
+                    //           style: Theme.of(context).textTheme.bodyText2),
+                    //     ),
+                    //   ],
+                    // ),
                   ),
                 );
               }
