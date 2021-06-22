@@ -106,31 +106,50 @@ class ListMuseum extends StatefulWidget {
 }
 
 class _ListMuseumState extends State<ListMuseum> {
+  final List<String> namaMuseum = <String>[
+    'Museum A',
+    'Museum B',
+    'Museum C',
+    'Museum D',
+  ];
+
+  final List<String> lokasiMuseum = <String>[
+    'Surakarta',
+    'Jakarta',
+    'Malang',
+    'Surabaya'
+  ];
 
   Widget _buildMuseum(int index) {
     return Container(
       margin: EdgeInsets.only(top: 10),
       height: 30,
-      color: Colors.red,
+      color: Colors.white,
+      child: 
+        FlatButton(
+          onPressed: (){},
+          child: Text(namaMuseum[index]+'\n'+lokasiMuseum[index])
+        ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(250, 250, 250, 1),
       body: ListView.builder(
-          itemCount: 5,
+          itemCount: namaMuseum.length + 1,
           itemBuilder: (context, int index) {
             if (index == 0) {
               return Center(
                 child: Container(
                   height: 30,
-                  color: Colors.blue,
+                  // color: Colors.blue,
                   child: Text('List Museum'),
                 ),
               );
             }
-            return _buildMuseum(index);
+            return _buildMuseum(index-1);
           }
         ),
     );
