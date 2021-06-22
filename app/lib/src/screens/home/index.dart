@@ -130,7 +130,30 @@ class _ListMuseumState extends State<ListMuseum> {
         child: 
           TextButton(
             onPressed: (){},
-            child: Text(namaMuseum[index]+'\n'+lokasiMuseum[index])
+            child: Row(
+              children: [
+                Text(
+                namaMuseum[index]+'\n'+lokasiMuseum[index]
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 20),
+                  height: 10,
+                  width: 20,
+                  color: Colors.red,
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 20),
+                  height: 10,
+                  width: 20,
+                  color: Colors.red,
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 20),
+                  height: 10,
+                  width: 20,
+                  color: Colors.red,
+                ),
+            ])
           ),
       )],
     );
