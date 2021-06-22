@@ -17,100 +17,122 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     authenticationBloc.add(GetUserData());
-    return WillPopScope(
-        onWillPop: () async => false,
-        child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-            cubit: authenticationBloc,
-            builder: (BuildContext context, AuthenticationState state) {
-              if (state is SetUserData) {
-                return Scaffold(
-                  appBar: AppBar(
-                    centerTitle: true,
-                    title: Text(
-                      string_constants.app_bar_title,
-                      style: Theme.of(context).appBarTheme.textTheme.bodyText1,
-                    ),
-                    actions: [
-                      // IconButton(
-                      //     icon: Icon(Icons.logout),
-                      //     onPressed: () {
-                      //       authenticationBloc.add(UserLogOut());
-                      //     }),
-                    ],
-                  ),
-                  body: Center(
-                    child: Text('/home'),
-                  ),
-                  drawer: Drawer(
-                    // child: ListView(
-                    //   padding: EdgeInsets.zero,
-                    //   children: <Widget>[
-                    //     DrawerHeader(
-                    //       child: Column(
-                    //         crossAxisAlignment: CrossAxisAlignment.start,
-                    //         children: [
-                    //           Row(
-                    //             mainAxisAlignment:
-                    //                 MainAxisAlignment.spaceBetween,
-                    //             crossAxisAlignment: CrossAxisAlignment.start,
-                    //             children: [
-                    //               Container(
-                    //                 decoration: BoxDecoration(
-                    //                     borderRadius: BorderRadius.circular(50),
-                    //                     color: Colors.white),
-                    //                 child: CachedImage(
-                    //                   imageUrl:
-                    //                       state.currentUserData.data.avatar,
-                    //                   fit: BoxFit.fitWidth,
-                    //                   errorWidget: Image.network(
-                    //                     AllImages().kDefaultImage,
-                    //                   ),
-                    //                   width: 80,
-                    //                   height: 80,
-                    //                   placeholder: CircularProgressIndicator(),
-                    //                 ),
-                    //               ),
-                    //               Switch(
-                    //                 value:
-                    //                     Provider.of<AppStateNotifier>(context)
-                    //                         .isDarkMode,
-                    //                 onChanged: (value) {
-                    //                   Provider.of<AppStateNotifier>(context,
-                    //                           listen: false)
-                    //                       .updateTheme(value);
-                    //                 },
-                    //               ),
-                    //             ],
-                    //           )
-                    //         ],
-                    //       ),
-                    //       decoration: BoxDecoration(
-                    //         color: Theme.of(context).dividerColor,
-                    //       ),
-                    //     ),
-                    //     ListTile(
-                    //       title: Text(
-                    //           '${state.currentUserData.data.firstName} ${state.currentUserData.data.lastName}',
-                    //           style: Theme.of(context).textTheme.bodyText2),
-                    //     ),
-                    //     ListTile(
-                    //       title: Text(state.currentUserData.data.email,
-                    //           style: Theme.of(context).textTheme.bodyText2),
-                    //     ),
-                    //     ListTile(
-                    //       title: Text(state.currentUserData.ad.company,
-                    //           style: Theme.of(context).textTheme.bodyText2),
-                    //     ),
-                    //   ],
-                    // ),
-                  ),
-                );
-              }
-              return Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          string_constants.app_bar_title,
+          style: Theme.of(context).appBarTheme.textTheme.bodyText1,
+        ),
+        actions: [
+          // IconButton(
+          //     icon: Icon(Icons.logout),
+          //     onPressed: () {
+          //       authenticationBloc.add(UserLogOut());
+          //     }),
+        ],
+      ),
+      body: ListMuseum(),
+      drawer: Drawer(
+          // child: ListView(
+          //   padding: EdgeInsets.zero,
+          //   children: <Widget>[
+          //     DrawerHeader(
+          //       child: Column(
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         children: [
+          //           Row(
+          //             mainAxisAlignment:
+          //                 MainAxisAlignment.spaceBetween,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Container(
+          //                 decoration: BoxDecoration(
+          //                     borderRadius: BorderRadius.circular(50),
+          //                     color: Colors.white),
+          //                 child: CachedImage(
+          //                   imageUrl:
+          //                       state.currentUserData.data.avatar,
+          //                   fit: BoxFit.fitWidth,
+          //                   errorWidget: Image.network(
+          //                     AllImages().kDefaultImage,
+          //                   ),
+          //                   width: 80,
+          //                   height: 80,
+          //                   placeholder: CircularProgressIndicator(),
+          //                 ),
+          //               ),
+          //               Switch(
+          //                 value:
+          //                     Provider.of<AppStateNotifier>(context)
+          //                         .isDarkMode,
+          //                 onChanged: (value) {
+          //                   Provider.of<AppStateNotifier>(context,
+          //                           listen: false)
+          //                       .updateTheme(value);
+          //                 },
+          //               ),
+          //             ],
+          //           )
+          //         ],
+          //       ),
+          //       decoration: BoxDecoration(
+          //         color: Theme.of(context).dividerColor,
+          //       ),
+          //     ),
+          //     ListTile(
+          //       title: Text(
+          //           '${state.currentUserData.data.firstName} ${state.currentUserData.data.lastName}',
+          //           style: Theme.of(context).textTheme.bodyText2),
+          //     ),
+          //     ListTile(
+          //       title: Text(state.currentUserData.data.email,
+          //           style: Theme.of(context).textTheme.bodyText2),
+          //     ),
+          //     ListTile(
+          //       title: Text(state.currentUserData.ad.company,
+          //           style: Theme.of(context).textTheme.bodyText2),
+          //     ),
+          //   ],
+          // ),
+          ),
+    );
+  }
+}
+
+class ListMuseum extends StatefulWidget {
+  @override
+  _ListMuseumState createState() => _ListMuseumState();
+}
+
+class _ListMuseumState extends State<ListMuseum> {
+
+  Widget _buildMuseum(int index) {
+    return Container(
+      margin: EdgeInsets.only(top: 10),
+      height: 30,
+      color: Colors.red,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ListView.builder(
+          itemCount: 5,
+          itemBuilder: (context, int index) {
+            if (index == 0) {
+              return Center(
+                child: Container(
+                  height: 30,
+                  color: Colors.blue,
+                  child: Text('List Museum'),
                 ),
               );
-            }));
+            }
+            return _buildMuseum(index);
+          }
+        ),
+    );
   }
 }
