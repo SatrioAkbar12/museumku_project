@@ -121,15 +121,18 @@ class _ListMuseumState extends State<ListMuseum> {
   ];
 
   Widget _buildMuseum(int index) {
-    return Container(
-      margin: EdgeInsets.only(top: 10),
-      height: 30,
-      color: Colors.white,
-      child: 
-        FlatButton(
-          onPressed: (){},
-          child: Text(namaMuseum[index]+'\n'+lokasiMuseum[index])
-        ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [Container(
+        margin: EdgeInsets.only(top: 10),
+        height: 30,
+        color: Colors.white,
+        child: 
+          TextButton(
+            onPressed: (){},
+            child: Text(namaMuseum[index]+'\n'+lokasiMuseum[index])
+          ),
+      )],
     );
   }
 
